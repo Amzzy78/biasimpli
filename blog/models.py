@@ -6,8 +6,6 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 
-
-
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
@@ -29,8 +27,9 @@ class Post(models.Model):
     updated = models.DateTimeField(auto_now=True)
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='draft')
     likes = models.ManyToManyField(User, related_name='blog_likes', blank=True)
-    objects = models.Manager() # The default manager
-    published = PublishedManager() # Our custom manager
+    objects = models.Manager()
+    published = PublishedManager()
+
 
 class Meta:
     ordering = ('-publish',)
@@ -57,4 +56,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment {self.body} by {self.name}"
-
