@@ -15,10 +15,10 @@
                             <div class="image-container">
                                 {% if "placeholder" in post.featured_image.url %}
                                 <img class="card-img-top"
-                                    src="https://res.cloudinary.com/ann-marie-murphy/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1644595504/spices-header_tvf2kh.jpg">
+                                    src="https://res.cloudinary.com/ann-marie-murphy/image/upload/v1644595504/spices-header_tvf2kh.jpg">
                                 {% else %}
                                 <img class="card-img-top" src="{{ post.featured_image.url }}">
-                                {% else %}
+                                {% endif %}
                                 <div class="image-flash">
                                     <p class="author">Author: {{ post.author }}</p>
                                 </div>
