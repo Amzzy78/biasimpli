@@ -5,14 +5,14 @@ from .models import Post
 # Create your views here.
 
 
-# def post_list(request):
-#     posts = Post.published.all()
-#     return render(request, 'blog/post/list.html', {'posts': posts})
+def post_list(request):
+    posts = Post.published.all()
+    return render(request, 'blog/post/list.html', {'posts': posts})
 
 
-# def post_detail(request, year, month, day, post):
-#     post = get_object_or_404(Post, slug=post, status='published', publish_year=year, publish_month=month, publish_day=day)
-#     return render(request, 'blog/post/detail.html', {'post': post})
+def post_detail(request, year, month, day, post):
+    post = get_object_or_404(Post, slug=post, status='published', publish_year=year, publish_month=month, publish_day=day)
+    return render(request, 'blog/post/detail.html', {'post': post})
 
 class PostList(generic.ListView):
     model = Post
@@ -39,6 +39,6 @@ class PostDetail(View):
                 "comments": comments,
                 "commented": False,
                 "liked": liked,
-                "comment_form": CommentForm()
+                
             },
         )
