@@ -4,14 +4,15 @@ from .models import Post, Comment
 
 # Register your models here.
 
- 
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'author', 'publish', 'status')
     search_fields = ('title', 'body')
     prepopulated_fields = {'slug': ('title',)}
-    raw_id_fields = ('author',)
-    date_hierachy = 'publish'
-    ordering = ['status', 'publish']
+    # raw_id_fields = ('author',)
+    # date_hierachy = 'publish'
+    list_filter = ('status', 'created_on')
+    # ordering = ['status', 'publish']
 admin.site.register(Post, PostAdmin)   
 
 
